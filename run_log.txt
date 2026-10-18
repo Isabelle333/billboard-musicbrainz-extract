@@ -1,0 +1,211 @@
+=== mb_01_schema.sql
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+=== mb_02_load.sql
+Timing is on.
+COPY 3015712
+Time: 7935.652 ms (00:07.936)
+COPY 3917382
+Time: 7671.913 ms (00:07.672)
+COPY 7301698
+Time: 5016.239 ms (00:05.016)
+COPY 40595893
+Time: 93770.269 ms (01:33.770)
+COPY 4584002
+Time: 9449.508 ms (00:09.450)
+COPY 5
+Time: 1.310 ms
+COPY 5858206
+Time: 13581.637 ms (00:13.582)
+COPY 7
+Time: 1.919 ms
+COPY 13337269
+Time: 5909.059 ms (00:05.909)
+COPY 484343
+Time: 214.136 ms
+COPY 6426136
+Time: 9989.477 ms (00:09.989)
+COPY 58471986
+Time: 150402.013 ms (02:30.402)
+COPY 2216
+Time: 17.166 ms
+COPY 245595
+Time: 188.865 ms
+COPY 7364778
+Time: 9340.272 ms (00:09.340)
+COPY 5032181
+Time: 5175.733 ms (00:05.176)
+COPY 774737
+Time: 839.232 ms
+       table_name        |   rows   
+-------------------------+----------
+ genre                   |     2216
+ tag                     |   245595
+ release_unknown_country |   484343
+ artist_tag              |   774737
+ artist                  |  3015712
+ artist_credit           |  3917382
+ release_group_tag       |  5032181
+ release_group           |  4584002
+ artist_credit_name      |  7301698
+ recording_tag           |  7364778
+ medium                  |  6426136
+ release                 |  5858206
+ release_country         | 13337269
+ recording               | 40595893
+ track                   | 58471986
+(15 rows)
+
+Time: 177761.811 ms (02:57.762)
+=== mb_03_indexes.sql
+Timing is on.
+SET
+Time: 0.614 ms
+ALTER TABLE
+Time: 2401.205 ms (00:02.401)
+ALTER TABLE
+Time: 2661.546 ms (00:02.662)
+ALTER TABLE
+Time: 4397.125 ms (00:04.397)
+ALTER TABLE
+Time: 29071.303 ms (00:29.071)
+ALTER TABLE
+Time: 1975.743 ms (00:01.976)
+ALTER TABLE
+Time: 2861.961 ms (00:02.862)
+ALTER TABLE
+Time: 3256.914 ms (00:03.257)
+ALTER TABLE
+Time: 31301.639 ms (00:31.302)
+ALTER TABLE
+Time: 81.031 ms
+CREATE INDEX
+Time: 28516.595 ms (00:28.517)
+CREATE INDEX
+Time: 2985.150 ms (00:02.985)
+CREATE INDEX
+Time: 4437.050 ms (00:04.437)
+CREATE INDEX
+Time: 158.757 ms
+CREATE INDEX
+Time: 2692.893 ms (00:02.693)
+CREATE INDEX
+Time: 1802.932 ms (00:01.803)
+CREATE INDEX
+Time: 264.116 ms
+ANALYZE
+Time: 9872.091 ms (00:09.872)
+=== mb_04_billboard.sql
+SET
+DROP TABLE
+CREATE TABLE
+COPY 11785
+ spellings | songs 
+-----------+-------
+     11785 | 11728
+(1 row)
+
+=== mb_05_match.sql
+Timing is on.
+SET
+Time: 0.219 ms
+CREATE EXTENSION
+Time: 26.372 ms
+CREATE FUNCTION
+Time: 1.200 ms
+CREATE FUNCTION
+Time: 0.412 ms
+CREATE FUNCTION
+Time: 0.203 ms
+DROP TABLE
+Time: 0.062 ms
+SELECT 11785
+Time: 240.942 ms
+DROP TABLE
+Time: 0.294 ms
+SELECT 2883686
+Time: 189589.687 ms (03:09.590)
+CREATE INDEX
+Time: 2213.499 ms (00:02.213)
+CREATE INDEX
+Time: 1696.243 ms (00:01.696)
+CREATE INDEX
+Time: 1441.083 ms (00:01.441)
+DROP TABLE
+Time: 1.845 ms
+SELECT 3737961
+Time: 35363.807 ms (00:35.364)
+CREATE INDEX
+Time: 2600.433 ms (00:02.600)
+DROP TABLE
+Time: 0.145 ms
+SELECT 52171
+Time: 5849.416 ms (00:05.849)
+INSERT 0 1236
+Time: 2907.143 ms (00:02.907)
+CREATE INDEX
+Time: 18.807 ms
+ id |      name      
+----+----------------
+  1 | Official
+  2 | Promotion
+  3 | Bootleg
+  4 | Pseudo-Release
+  5 | Withdrawn
+  6 | Cancelled
+ 38 | Expunged
+(7 rows)
+
+Time: 0.926 ms
+DROP TABLE
+Time: 0.056 ms
+SELECT 290814
+Time: 11360.896 ms (00:11.361)
+DROP TABLE
+Time: 2.196 ms
+SELECT 11190
+Time: 245.046 ms
+DROP TABLE
+Time: 5.338 ms
+SELECT 151815
+Time: 16175.409 ms (00:16.175)
+DROP TABLE
+Time: 0.234 ms
+SELECT 11061
+Time: 311.725 ms
+DROP TABLE
+Time: 0.198 ms
+SELECT 11728
+Time: 4585.071 ms (00:04.585)
+      match_method      | songs | with_release_date | with_genre 
+------------------------+-------+-------------------+------------
+ exact title            | 11033 |             11015 |      10890
+ no match               |   504 |                 0 |          0
+ title without brackets |   191 |               175 |        171
+(3 rows)
+
+Time: 4.541 ms
+=== mb_06_export.sql
+COPY 11728
+ rows_exported 
+---------------
+         11728
+(1 row)
+
+a7dcab5ba6888d7a0f11da8d6b20f81fde6540f897400a9c09b3db85c3cfb3af  musicbrainz_for_billboard_songs.csv
+Done.
