@@ -1,0 +1,132 @@
+=== mb_07_comparison.sql
+Timing is on.
+SET
+Time: 2.816 ms
+ matched_billboard_songs 
+-------------------------
+                   11224
+(1 row)
+
+Time: 41.653 ms
+DROP TABLE
+Time: 15.290 ms
+SELECT 11224
+Time: 5019.991 ms (00:05.020)
+DROP TABLE
+Time: 6.146 ms
+SELECT 2102
+Time: 3.938 ms
+ songs_with_lead_artist | distinct_lead_artists 
+------------------------+-----------------------
+                  11224 |                  2102
+(1 row)
+
+Time: 0.712 ms
+CREATE INDEX
+Time: 1.384 ms
+CREATE INDEX
+Time: 0.069 ms
+DROP TABLE
+Time: 4.864 ms
+SELECT 964829
+Time: 21888.333 ms (00:21.888)
+ALTER TABLE
+Time: 14.160 ms
+UPDATE 964829
+Time: 2978.564 ms (00:02.979)
+CREATE INDEX
+Time: 502.648 ms
+CREATE INDEX
+Time: 860.071 ms
+ candidate_recordings | empty_title | intro_outro_interlude_skit | same_title_as_a_billboard_song | matched_to_a_billboard_song |  kept  
+----------------------+-------------+----------------------------+--------------------------------+-----------------------------+--------
+               964829 |        5740 |                       6981 |                         230028 |                       52867 | 725119
+(1 row)
+
+Time: 116.773 ms
+DROP TABLE
+Time: 5.564 ms
+SELECT 1672675
+Time: 30351.831 ms (00:30.352)
+DROP TABLE
+Time: 15.343 ms
+SELECT 243274
+Time: 1462.501 ms (00:01.463)
+DROP TABLE
+Time: 7.168 ms
+SELECT 186819
+Time: 1291.042 ms (00:01.291)
+CREATE INDEX
+Time: 191.341 ms
+DROP TABLE
+Time: 2.226 ms
+SELECT 340724
+Time: 1742.094 ms (00:01.742)
+ songs_kept | songs_with_a_date | songs_released_2000_2024 
+------------+-------------------+--------------------------
+     288889 |            243274 |                   186819
+(1 row)
+
+Time: 2345.825 ms (00:02.346)
+DROP TABLE
+Time: 3.036 ms
+SELECT 1560186
+Time: 11329.605 ms (00:11.330)
+DROP TABLE
+Time: 12.330 ms
+SELECT 179785
+Time: 1756.168 ms (00:01.756)
+DROP TABLE
+Time: 15.994 ms
+SELECT 186819
+Time: 13108.057 ms (00:13.108)
+ first_release_year | songs | exact_date | with_genre 
+--------------------+-------+------------+------------
+               2000 |  5030 |       3421 |       4895
+               2001 |  5359 |       3645 |       5254
+               2002 |  5669 |       4007 |       5355
+               2003 |  6500 |       4244 |       6320
+               2004 |  6593 |       4397 |       6475
+               2005 |  7149 |       5127 |       6965
+               2006 |  8042 |       5948 |       7817
+               2007 |  7724 |       5885 |       7598
+               2008 |  7942 |       6341 |       7725
+               2009 |  8378 |       6896 |       8135
+               2010 |  8701 |       7237 |       8411
+               2011 |  7981 |       6988 |       7807
+               2012 |  7559 |       6911 |       7239
+               2013 |  8117 |       7498 |       7852
+               2014 |  7479 |       6946 |       7220
+               2015 |  8665 |       8170 |       8398
+               2016 |  8078 |       7664 |       7711
+               2017 |  7607 |       7291 |       7261
+               2018 |  7644 |       7325 |       7310
+               2019 |  7687 |       7457 |       7361
+               2020 |  8432 |       8079 |       7935
+               2021 |  7101 |       6979 |       6831
+               2022 |  7701 |       7479 |       7354
+               2023 |  7602 |       7485 |       7186
+               2024 |  8079 |       8006 |       7370
+(25 rows)
+
+Time: 195.762 ms
+  genre_level  | songs 
+---------------+-------
+ artist        | 78406
+ recording     | 50732
+ release group | 50647
+               |  7034
+(4 rows)
+
+Time: 34.141 ms
+=== mb_08_export_comparison.sql
+COPY 186819
+COPY 11224
+ comparison_rows_exported | lead_artist_rows_exported 
+--------------------------+---------------------------
+                   186819 |                     11224
+(1 row)
+
+fa4fb810e4533bd452a0c0aa8d3ec56a2aa863da50beadd1de16dfefdde7bc4d  comparison_songs_musicbrainz.csv.gz
+603571bea2d887dd460556b5f39dd40864934b4728b03084291387e847ef4206  billboard_song_lead_artist.csv
+Done.
