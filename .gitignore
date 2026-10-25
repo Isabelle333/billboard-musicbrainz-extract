@@ -1,0 +1,14 @@
+# Files produced or used locally that are deliberately NOT published (see README)
+
+# MusicBrainz dump files: several GB, available from MetaBrainz (see provenance_musicbrainz.txt)
+mbdump/
+*.tar.bz2
+
+# List of Billboard songs used for matching: derived from Billboard chart data, which we do not redistribute
+billboard_song_names.csv
+
+# Uncompressed comparison file (only the reproducible .gz version is published)
+comparison_songs_musicbrainz.csv
+
+# Mac system files
+.DS_Store
