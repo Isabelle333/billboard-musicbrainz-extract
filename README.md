@@ -1,5 +1,14 @@
 # MusicBrainz information for Billboard Hot 100 songs (2000–2025)
 
+This repository contains our project submission for intermediary check in and peer review. 
+Here, you can find Notebook and Database Extraction Scripts.
+Also, please find decision log at the end.
+
+## Notebook
+
+Access it [here](https://github.com/Isabelle333/billboard-musicbrainz-extract/blob/main/data_project_billboard_group_c_v2.ipynb). It contains all the work, and also all the decision were documented there.
+
+## Scripts
 Output of the MusicBrainz steps of our ESSEC data project (Group C).
 
 - **Job A:** for each song that reached the Billboard Hot 100 between 2000 and 2025 (identified by our own `song_id`), its MusicBrainz recording, first release date, first release type and genres.
