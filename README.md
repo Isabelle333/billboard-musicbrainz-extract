@@ -35,7 +35,7 @@ This repository is therefore published under the same terms for the genre inform
 ## Reproducing
 Run `run_all.sh` (Job A), then `run_comparison.sh` (Job B), on the same MusicBrainz export; the SHA-256 fingerprints of the outputs must match those recorded here. MusicBrainz publishes each full export for about two weeks only; re-running the scripts on a later export reproduces the method but may give slightly different results.
 
-## Decision Log
+# Decision Log For Analysis
 Every major decision in this project, the alternatives considered, and where it is justified.
 
 | # | Decision | Alternatives considered | Main reason | Section |
