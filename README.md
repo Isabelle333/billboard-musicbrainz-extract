@@ -5,8 +5,7 @@ the PostgreSQL scripts we ran on the full MusicBrainz export, their results, and
 
 ## Notebook
 
-[`Data Project_Billboard Charts_Group_C.ipynb`](Data%20Project_Billboard_Group%20C.ipynb) contains the whole workflow, from collection to analysis,
-with every decision and its justification (decision log at the top of the notebook).
+[`Data Project_Billboard Charts_Group_C.ipynb`](Data%20Project_Billboard%20Charts_Group_C.ipynb) contains the whole workflow, from collection to analysis, with every decision and its justification (decision log at the top of the notebook).
 It is published **without outputs**, because some outputs show sample rows of Billboard chart data, which we do not redistribute.
 Open it in Google Colab and use **Runtime → Run all** to reproduce every result; the notebook downloads all its data itself.
 
