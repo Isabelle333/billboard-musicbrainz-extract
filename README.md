@@ -42,7 +42,41 @@ Data from **MusicBrainz** (https://musicbrainz.org), full export `20261017-00224
 This repository is therefore published under the same terms for the genre information (CC BY-NC-SA 3.0), for non-commercial educational use.
 
 ## Reproducing
-Run `run_all.sh` (Job A), then `run_comparison.sh` (Job B), on the same MusicBrainz export; the SHA-256 fingerprints of the outputs must match those recorded here. MusicBrainz publishes each full export for about two weeks only; re-running the scripts on a later export reproduces the method but may give slightly different results.
+
+The work runs in three stages, in this order. Some intermediate files are not
+in this repository because they contain Billboard chart data, which we do not
+redistribute; each one is rebuilt by the step that produces it.
+
+### Intermediate files not included
+
+| File | Produced by | Used by |
+|---|---|---|
+| `billboard_song_names.csv` (song_id, name_id, title, performer) | Notebook, Section 8.1 (downloaded automatically) | `sql/mb_04_billboard.sql` |
+| `outputs/billboard_hot100.sqlite`, cleaned tables in `outputs/clean/` | Notebook, Sections 5–6 | Rest of the notebook |
+| `mbdump/` folder (MusicBrainz tables, ~25 GB) | Download and extract `mbdump.tar.bz2` and `mbdump-derived.tar.bz2` from export `20261017-002244` (see `provenance_musicbrainz.txt`) | `sql/mb_02_load.sql` |
+
+### Order of execution
+
+1. **Notebook, Sections 1–8.1 (Google Colab).** Downloads the pinned Billboard
+   archive, checks its SHA-256, cleans it and stores it in SQLite. Section 8.1
+   exports `billboard_song_names.csv` and downloads it to your computer.
+2. **Job A (local computer, PostgreSQL).** Put `billboard_song_names.csv` and the
+   extracted `mbdump/` folder in this repository's folder, then run
+   `bash run_all.sh 2>&1 | tee run_log.txt`. Output: `musicbrainz_for_billboard_songs.csv`.
+   Its SHA-256 must match `musicbrainz_for_billboard_songs.sha256`.
+3. **Job B (same database).** Run `bash run_comparison.sh 2>&1 | tee run_log_comparison.txt`.
+   Outputs: `comparison_songs_musicbrainz.csv.gz` and `billboard_song_lead_artist.csv`.
+   Their SHA-256 must match `comparison_files.sha256`.
+4. **Notebook, Sections 8.3–12.** Downloads the Job A and Job B extracts from this
+   repository at fixed commits, checks their SHA-256 and runs the analysis.
+
+**Shortcut:** to reproduce only the analysis, open the notebook and use
+**Runtime → Run all**. Steps 2–3 are skipped, because the notebook downloads
+the published extracts.
+
+MusicBrainz keeps each full export online for about two weeks only. Running
+steps 2–3 on a later export reproduces the method, but the results and
+fingerprints may differ slightly.
 
 # Decision Log For Analysis
 Every major decision in this project, the alternatives considered, and where it is justified.
