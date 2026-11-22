@@ -1,13 +1,35 @@
 # Billboard Hot 100 and MusicBrainz: what determines whether a song reaches the chart? (Group C)
 
-This repository holds the final notebook of our ESSEC data project (Group C) and the MusicBrainz part of its workflow:
+**Authors (Group C):** Thien Anh NGUYEN, Norelle CHY--GLASSCOCK, Lio SUCHET--WANG, Georg RIEKHAKAINEN, Isabelle LIEW YU CHEN
+
+This repository holds the final notebook of our data project (Group C) and the MusicBrainz part of its workflow:
 the PostgreSQL scripts we ran on the full MusicBrainz export, their results, and their run logs.
 
 ## Notebook
 
-[`Data Project_Billboard Charts_Group_C.ipynb`](Data%20Project_Billboard%20Charts_Group_C.ipynb) contains the whole workflow, from collection to analysis, with every decision and its justification (decision log at the top of the notebook).
-It is published **without outputs**, because some outputs show sample rows of Billboard chart data, which we do not redistribute.
-Open it in Google Colab and use **Runtime → Run all** to reproduce every result; the notebook downloads all its data itself.
+[`Data_Project_Billboard_Charts_Group_C.ipynb`](Data_Project_Billboard_Charts_Group_C.ipynb) contains the whole workflow, from collection to analysis,
+with every decision and its justification (decision log at the top of the notebook).
+The copy in this repository is published **without outputs**, because some outputs show sample rows of Billboard chart data, which we do not redistribute.
+
+## How to run
+
+**Python version:** 3.13 (tested in Google Colab and in a fresh local virtual environment).
+
+**Option 1 – Google Colab (recommended, nothing to install):** open the notebook in Colab and use **Runtime → Run all**
+(to start from scratch, first **Runtime → Disconnect and delete runtime**). Allow multiple downloads if the browser asks.
+
+**Option 2 – on your own computer:**
+
+    python3 -m venv .venv
+    source .venv/bin/activate          # Windows (PowerShell): .venv\Scripts\Activate.ps1
+    pip install -r requirements.txt
+    jupyter notebook Data_Project_Billboard_Charts_Group_C.ipynb
+
+Then use **Run → Run All Cells**. An internet connection is needed; a full run takes a few minutes. All files are written to an `outputs/` folder next to the notebook.
+
+**Data:** nothing needs to be downloaded by hand. The notebook downloads the Billboard archive (UT Data, `utdata/rwd-billboard-data`)
+and the MusicBrainz extracts of this repository at fixed commits, and checks each file against its SHA-256 fingerprint.
+No password, API key or other setting is needed.
 
 ## MusicBrainz scripts and extracts
 
@@ -32,6 +54,8 @@ The notebook downloads these files at fixed commits and checks their SHA-256 fin
 - `run_comparison.sh`, `sql/mb_07_comparison.sql`, `sql/mb_08_export_comparison.sql` – the scripts that produced them; they run in the database built by Job A
 - `run_log_comparison.txt` – full output of the run, including how many recordings each rule removed
 
+The three data files (`.csv`, `.csv.gz`) are in this repository but not in our submitted archive, because the notebook downloads them from here.
+
 ## Not included
 - The MusicBrainz dump files (several GB; published by MetaBrainz, identified in `provenance_musicbrainz.txt`).
 - Billboard chart data, including the list of Billboard songs used for matching (`billboard_song_names.csv`): the notebook downloads the chart data from its original public source and rebuilds this list (see Reproducing).
@@ -45,8 +69,7 @@ The extracts in this repository are therefore published under the same terms for
 
 ## Reproducing
 
-**Analysis only (no setup needed):** open the notebook in Google Colab and use **Runtime → Run all**.
-The notebook downloads the published Job A and Job B extracts, so stages 2–3 below are skipped.
+**Analysis only:** run the notebook as described in "How to run". It downloads the published Job A and Job B extracts, so stages 2–3 below are skipped.
 
 The whole workflow runs in four stages, in this order. Some intermediate files are not in this repository because they contain
 Billboard chart data, which we do not redistribute, or are too large; each one is rebuilt by the step that produces it.
@@ -61,9 +84,9 @@ Billboard chart data, which we do not redistribute, or are too large; each one i
 
 ### Order of execution
 
-1. **Notebook, Sections 1–8.1 (Google Colab).** Downloads the pinned Billboard archive, checks its SHA-256, cleans it and stores it in SQLite.
+1. **Notebook, Sections 1–8.1.** Downloads the pinned Billboard archive, checks its SHA-256, cleans it and stores it in SQLite.
    Section 8.1 exports `billboard_song_names.csv` and downloads it to your computer.
-2. **Job A (local computer, PostgreSQL).** Put `billboard_song_names.csv` and the extracted `mbdump/` folder in this repository's folder,
+2. **Job A (local computer, PostgreSQL 18).** Put `billboard_song_names.csv` and the extracted `mbdump/` folder in this repository's folder,
    then run `bash run_all.sh 2>&1 | tee run_log.txt`. Output: `musicbrainz_for_billboard_songs.csv`.
    Its SHA-256 must match `musicbrainz_for_billboard_songs.sha256`.
 3. **Job B (same database).** Run `bash run_comparison.sh 2>&1 | tee run_log_comparison.txt`.
