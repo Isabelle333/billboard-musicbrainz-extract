@@ -98,3 +98,33 @@ but the results and fingerprints may differ slightly.
 
 ## Decisions
 Every decision, the alternatives considered and the reasons are in the decision log at the top of the notebook.
+
+## Running the workflow and how long it takes
+
+- **Analysis (all results and figures in the report):** run the notebook top to bottom.
+  - Colab: **Runtime → Run all**.
+  - Locally: `pip install -r requirements.txt`, then
+    `jupyter nbconvert --to notebook --execute Data_Project_Billboard_Charts_Group_C.ipynb --output executed.ipynb`
+  - About 1–3 minutes, depending on the connection. Nothing needs to be done by hand: no account, API key or registration.
+- **Building the MusicBrainz data (Jobs A and B, optional):** several hours on a laptop with PostgreSQL 18 and about 25 GB free.
+  The MusicBrainz export we used (20261017-002244) is no longer on the MusicBrainz server; a newer export reproduces the method, with slightly different numbers.
+  Our extracts are included in this archive and also downloaded by the notebook at fixed commits.
+- **Billboard raw data is not included:** the Billboard.com Terms of Use do not allow redistributing chart data, so the notebook downloads it
+  from the public UT Data archive (`utdata/rwd-billboard-data`, fixed commit) and checks its SHA-256.
+
+
+  ## Where each result in the report comes from (to edit)
+
+| In the report | Produced by (notebook section, figure file in `outputs/figures/`) |
+|---|---|
+| Data: 1,357 charts, 11,728 songs | Notebook 5.10–5.12 |
+| MusicBrainz match rate (95.7%) | Notebook 8.3–8.6 |
+| Comparison group (186,819 → 176,210 songs) | Notebook 10.1–10.5 |
+| Storage choice (SQLite vs CSV vs Parquet) | Notebook 6.6–6.8 |
+| 38% enter on first possible chart | Notebook 9.2, `9_2_cumulative_entry.png` |
+| 5.5% of songs charted | Notebook 11.1 |
+| Singles +11.3 points | Notebook 11.3, `11_3_release_type_within_artist.png` |
+| Pop +12.1 points | Notebook 11.4, `11_4_genre_within_artist.png` |
+| Chance to chart: 5.2% → 2.7% → 0.45% | Notebook 11.5, `11_5_chance_to_still_chart.png` |
+| Robustness checks | Notebook 11.6 |
+| Release month (exploratory) | Notebook 11.7, `11_7_singles_by_release_month.png` |
