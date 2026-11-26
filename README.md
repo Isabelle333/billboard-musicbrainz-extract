@@ -152,8 +152,6 @@ Run times of Jobs A and B are taken from `run_log.txt` and `run_log_comparison.t
  
 - **Python:** 3.13.
 - **Notebook run (analysis only):** an internet connection; the full run took 78 seconds in our local test.
-- **Operating systems tested:** [TO FILL IN: for example macOS 15, Ubuntu 24.04, Windows 11].
-- **Minimum RAM for the notebook:** [TO FILL IN: for example 8 GB]. Google Colab's free tier is enough.
 
 ## Decisions
 Every decision, the alternatives considered and the reasons are in the decision log at the top of the notebook.
