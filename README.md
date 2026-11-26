@@ -34,8 +34,6 @@ Or open the notebook with `jupyter notebook Data_Project_Billboard_Charts_Group_
 **How long it takes:** about 1–3 minutes depending on the connection (78 seconds in our local test). An internet connection is needed.
 All files are written to an `outputs/` folder next to the notebook (figures in `outputs/figures/`). The run ends with final checks (Section 12.3) that stop it if any result is wrong.
 
-If something goes wrong, see [Troubleshooting](#troubleshooting).
-
 ## What has to be done by hand
 
 **To reproduce the results of the report: nothing.** No account, API key, password or registration is needed.
@@ -145,8 +143,6 @@ Run times of Jobs A and B are taken from `run_log.txt` and `run_log_comparison.t
 | Chance to chart: 5.2% → 2.7% → 0.45% | Notebook 11.5, `11_5_chance_to_still_chart.png` |
 | Robustness checks | Notebook 11.6 |
 | Release month (exploratory) | Notebook 11.7, `11_7_singles_by_release_month.png` |
-
-## Troubleshooting
  
 ### Requirements and tested systems
  
