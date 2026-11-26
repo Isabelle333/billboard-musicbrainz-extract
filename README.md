@@ -1,4 +1,4 @@
-# (to edit after report) Billboard Hot 100 and MusicBrainz: what determines whether a song reaches the chart? (Group C)
+# Billboard Hot 100 and MusicBrainz: what determines whether a song reaches the chart? (Group C)
 
 **Authors (Group C):** Thien Anh NGUYEN, Norelle CHY--GLASSCOCK, Lio SUCHET--WANG, Georg RIEKHAKAINEN, Isabelle LIEW YU CHEN
 
@@ -32,7 +32,11 @@ The copy in this repository is published **without outputs**, because some outpu
 Or open the notebook with `jupyter notebook Data_Project_Billboard_Charts_Group_C.ipynb` and use **Run → Run All Cells**.
 
 **How long it takes:** about 1–3 minutes depending on the connection (78 seconds in our local test). An internet connection is needed.
-All files are written to an `outputs/` folder next to the notebook (figures in `outputs/figures/`). The run ends with final checks (Section 12.3) that stop it if any result is wrong.
+
+**Where the results are:** all files are written to an `outputs/` folder next to the notebook (figures in `outputs/figures/`).
+In Colab, this folder is shown in the **Files** panel (folder icon in the left sidebar) and is deleted when the runtime ends;
+the notebook also downloads its records and figures to your computer automatically.
+The run ends with final checks (Section 12.3) that stop it if any result is wrong.
 
 ## What has to be done by hand
 
@@ -59,9 +63,9 @@ from the public UT Data archive (`utdata/rwd-billboard-data`, fixed commit) and 
 The notebook downloads these files at fixed commits and checks their SHA-256 fingerprints (notebook Sections 8.3 and 10.2).
 
 ## Coverage periods
- 
+
 The two groups of songs do not cover exactly the same years:
- 
+
 | Group | Period | What the period refers to |
 |---|---|---|
 | Charting songs (Job A) | 2000–2025 | Chart dates: songs that appeared on at least one of the 1,357 weekly Hot 100 charts of 2000–2025 |
@@ -129,35 +133,45 @@ Run times of Jobs A and B are taken from `run_log.txt` and `run_log_comparison.t
 
 ## Where each result in the report comes from
 
-| In the report | Produced by (notebook section, figure file in `outputs/figures/`) |
+Figure files are in `outputs/figures/`.
+
+| In the report | Produced by |
 |---|---|
-| Data: 1,357 charts, 135,700 rows | Notebook 3.7, 4.5 |
-| 11,728 songs after cleaning | Notebook 5.16 |
-| Storage choice (SQLite vs CSV vs Parquet) | Notebook 6.6–6.8 |
-| MusicBrainz match rate (95.7%) | Notebook 8.4a; Job A (`sql/mb_05_match.sql`) |
-| Comparison group (186,819 → 176,210 songs) | Notebook 10.1–10.5; Job B (`sql/mb_07_comparison.sql`) |
-| 38% enter on first possible chart | Notebook 9.2, `9_2_cumulative_entry.png` |
-| 5.5% of songs charted | Notebook 11.1 |
-| Singles +11.3 points | Notebook 11.3, `11_3_release_type_within_artist.png` |
-| Pop +12.1 points | Notebook 11.4, `11_4_genre_within_artist.png` |
-| Chance to chart: 5.2% → 2.7% → 0.45% | Notebook 11.5, `11_5_chance_to_still_chart.png` |
-| Robustness checks | Notebook 11.6 |
+| Figure 1: chance that a song will still chart (5.2% → 2.7% → 0.45%) | Notebook 11.5, `11_5_chance_to_still_chart.png` |
+| Figure 2: release type, singles +11.3 points | Notebook 11.3, `11_3_release_type_within_artist.png` |
+| Figure 3: genre, pop +12.1 points | Notebook 11.4, `11_4_genre_within_artist.png` |
+| 1,357 charts, 135,700 rows | Notebook 3.7, 4.5 |
+| 11,728 songs after cleaning (34 renamed entries linked) | Notebook 5.16 |
+| Storage table (CSV vs Parquet vs SQLite) | Notebook 6.6–6.8 |
+| MusicBrainz match: 95.7% matched, 30/30 correct, 504 unmatched | Notebook 8.4a, 8.4d, 8.4e; Job A (`sql/mb_05_match.sql`) |
+| Release-date flags (M1–M3), genre families and ties | Notebook 8.4, 8.7 |
+| Comparison group: 186,819 → 176,210 songs; 30 songs checked by hand | Notebook 10.1–10.5; Job B (`sql/mb_07_comparison.sql`) |
+| 5.5% of 178,338 songs charted | Notebook 11.1 |
+| Time to chart: 38% on first possible chart, 54% within four, 92% within a year | Notebook 9.2, `9_2_cumulative_entry.png` |
+| Entry on first possible chart: 14% → 70% | Notebook 9.3, `9_3_speed_by_release_year.png` |
+| Artist popularity: 74.5% of entries by credits that had charted before | Notebook 7.5, 9.7 |
 | Release month (exploratory) | Notebook 11.7, `11_7_singles_by_release_month.png` |
- 
-### Requirements and tested systems
- 
-- **Python:** 3.13.
+| Robustness checks (worst case 4.2%, singles-only time to chart) | Notebook 11.6 |
+| 15 final checks | Notebook 12.3 |
+
+## Requirements and tested systems
+
+- **Python:** 3.13, with the packages in `requirements.txt`.
 - **Notebook run (analysis only):** an internet connection; the full run took 78 seconds in our local test.
+- **MusicBrainz jobs (optional):** PostgreSQL 18 and about 25 GB of free disk space.
 
 ## Decisions
+
 Every decision, the alternatives considered and the reasons are in the decision log at the top of the notebook.
 
+## AI use
+
+We used AI assistants to help write and debug code and to check and edit our text. Every choice was made and checked by the group, and every number comes from running the notebook.
+
 ## How to cite
- 
+
 If you use this repository, please cite it as:
- 
+
 > Nguyen, T. A., Chy--Glasscock, N., Suchet--Wang, L., Riekhakainen, G., & Liew Yu Chen, I. (2026). *Billboard Hot 100 and MusicBrainz: what determines whether a song reaches the chart? (Group C)* [Data project]. https://github.com/Isabelle333/billboard-musicbrainz-extract
 
 Please also credit the data sources: **MusicBrainz** (https://musicbrainz.org, MetaBrainz Foundation; see "Source and licence" for the licence terms) and the **UT Data archive** `utdata/rwd-billboard-data` for the Billboard chart data.
- 
-This project is not affiliated with, endorsed by or sponsored by Billboard or the MetaBrainz Foundation.
