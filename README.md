@@ -7,6 +7,8 @@
 This repository holds the final notebook of our data project (Group C) and the MusicBrainz part of its workflow:
 the PostgreSQL scripts we ran on the full MusicBrainz export, their results, and their run logs.
 
+This project is not affiliated with, endorsed by or sponsored by Billboard or the MetaBrainz Foundation.
+
 ## Notebook
 
 [`Data_Project_Billboard_Charts_Group_C.ipynb`](Data_Project_Billboard_Charts_Group_C.ipynb) contains the whole workflow, from collection to analysis,
@@ -32,6 +34,8 @@ Or open the notebook with `jupyter notebook Data_Project_Billboard_Charts_Group_
 **How long it takes:** about 1–3 minutes depending on the connection (78 seconds in our local test). An internet connection is needed.
 All files are written to an `outputs/` folder next to the notebook (figures in `outputs/figures/`). The run ends with final checks (Section 12.3) that stop it if any result is wrong.
 
+If something goes wrong, see [Troubleshooting](#troubleshooting).
+
 ## What has to be done by hand
 
 **To reproduce the results of the report: nothing.** No account, API key, password or registration is needed.
@@ -55,6 +59,15 @@ from the public UT Data archive (`utdata/rwd-billboard-data`, fixed commit) and 
 - **Job B:** a comparison group of songs by the same lead artists that never reached the Hot 100, released 2000–2024, with the same information derived by the same rules; and the lead artist of each charting song.
 
 The notebook downloads these files at fixed commits and checks their SHA-256 fingerprints (notebook Sections 8.3 and 10.2).
+
+## Coverage periods
+ 
+The two groups of songs do not cover exactly the same years:
+ 
+| Group | Period | What the period refers to |
+|---|---|---|
+| Charting songs (Job A) | 2000–2025 | Chart dates: songs that appeared on at least one of the 1,357 weekly Hot 100 charts of 2000–2025 |
+| Comparison songs (Job B) | 2000–2024 | Release dates: songs by the same lead artists that never reached the Hot 100 |
 
 ## Files
 
@@ -133,5 +146,24 @@ Run times of Jobs A and B are taken from `run_log.txt` and `run_log_comparison.t
 | Robustness checks | Notebook 11.6 |
 | Release month (exploratory) | Notebook 11.7, `11_7_singles_by_release_month.png` |
 
+## Troubleshooting
+ 
+### Requirements and tested systems
+ 
+- **Python:** 3.13.
+- **Notebook run (analysis only):** an internet connection; the full run took 78 seconds in our local test.
+- **Operating systems tested:** [TO FILL IN: for example macOS 15, Ubuntu 24.04, Windows 11].
+- **Minimum RAM for the notebook:** [TO FILL IN: for example 8 GB]. Google Colab's free tier is enough.
+
 ## Decisions
 Every decision, the alternatives considered and the reasons are in the decision log at the top of the notebook.
+
+## How to cite
+ 
+If you use this repository, please cite it as:
+ 
+> Nguyen, T. A., Chy--Glasscock, N., Suchet--Wang, L., Riekhakainen, G., & Liew Yu Chen, I. (2026). *Billboard Hot 100 and MusicBrainz: what determines whether a song reaches the chart? (Group C)* [Data project]. https://github.com/Isabelle333/billboard-musicbrainz-extract
+
+Please also credit the data sources: **MusicBrainz** (https://musicbrainz.org, MetaBrainz Foundation; see "Source and licence" for the licence terms) and the **UT Data archive** `utdata/rwd-billboard-data` for the Billboard chart data.
+ 
+This project is not affiliated with, endorsed by or sponsored by Billboard or the MetaBrainz Foundation.
