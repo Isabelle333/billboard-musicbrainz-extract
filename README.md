@@ -22,7 +22,7 @@ The copy in this repository is published **without outputs**, because some outpu
 **Option 1 – Google Colab (nothing to install):** open the notebook in Colab and use **Runtime → Run all**
 (to start from scratch, first **Runtime → Disconnect and delete runtime**). Allow multiple downloads if the browser asks.
 
-**Option 2 – on your own computer, one command:**
+**Option 2 – on your own computer:**
 
     python3 -m venv .venv
     source .venv/bin/activate          # Windows (PowerShell): .venv\Scripts\Activate.ps1
@@ -138,7 +138,7 @@ Figure files are in `outputs/figures/`.
 | In the report | Produced by |
 |---|---|
 | Figure 1: median weeks by entry position and era | Notebook 7.7, `fig6_entry_position_longevity_by_era.png` |
-| Figure 2: Figure 2: chance that a song will still chart | Notebook 11.5, `11_5_chance_to_still_chart.png` |
+| Figure 2 (main result): chance that a song will still chart | Notebook 11.5, `11_5_chance_to_still_chart.png` |
 | Figure 3a: release type | Notebook 11.3, `11_3_release_type_within_artist.png` |
 | Figure 3b: genre | Notebook 11.4, `11_4_genre_within_artist.png` |
 | 1,357 charts, 135,700 rows | Notebook 3.7, 4.5 |
@@ -173,6 +173,6 @@ We used AI assistants to help write and debug code and to check and edit our tex
 
 If you use this repository, please cite it as:
 
-> Nguyen, T. A., Chy--Glasscock, N., Suchet--Wang, L., Riekhakainen, G., & Liew Yu Chen, I. (2026). *Billboard Hot 100 and MusicBrainz: what determines whether a song reaches the chart? (Group C)* [Data project]. https://github.com/Isabelle333/billboard-musicbrainz-extract
+> Nguyen, T. A., Chy-Glasscock, N., Suchet-Wang, L., Riekhakainen, G., & Liew Yu Chen, I. (2026). *Billboard Hot 100 and MusicBrainz: what determines whether a song reaches the chart? (Group C)* [Data project]. https://github.com/Isabelle333/billboard-musicbrainz-extract
 
 Please also credit the data sources: **MusicBrainz** (https://musicbrainz.org, MetaBrainz Foundation; see "Source and licence" for the licence terms) and the **UT Data archive** `utdata/rwd-billboard-data` for the Billboard chart data.
