@@ -137,9 +137,10 @@ Figure files are in `outputs/figures/`.
 
 | In the report | Produced by |
 |---|---|
-| Figure 1: chance that a song will still chart (5.2% → 2.7% → 0.45%) | Notebook 11.5, `11_5_chance_to_still_chart.png` |
-| Figure 2: release type, singles +11.3 points | Notebook 11.3, `11_3_release_type_within_artist.png` |
-| Figure 3: genre, pop +12.1 points | Notebook 11.4, `11_4_genre_within_artist.png` |
+| Figure 1: median weeks by entry position and era | Notebook 7.7, `fig6_entry_position_longevity_by_era.png` |
+| Figure 2: Figure 2: chance that a song will still chart | Notebook 11.5, `11_5_chance_to_still_chart.png` |
+| Figure 3a: release type | Notebook 11.3, `11_3_release_type_within_artist.png` |
+| Figure 3b: genre | Notebook 11.4, `11_4_genre_within_artist.png` |
 | 1,357 charts, 135,700 rows | Notebook 3.7, 4.5 |
 | 11,728 songs after cleaning (34 renamed entries linked) | Notebook 5.16 |
 | Storage table (CSV vs Parquet vs SQLite) | Notebook 6.6–6.8 |
