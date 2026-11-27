@@ -29,7 +29,7 @@ The copy in this repository is published **without outputs**, because some outpu
     pip install -r requirements.txt
     python -m nbconvert --to notebook --execute --ExecutePreprocessor.timeout=1200 --output executed.ipynb Data_Project_Billboard_Charts_Group_C.ipynb
 
-Or open the notebook with `jupyter notebook Data_Project_Billboard_Charts_Group_C.ipynb` and use **Run → Run All Cells**.
+Or open the notebook with `python -m notebook Data_Project_Billboard_Charts_Group_C.ipynb` and use **Run → Run All Cells**.
 
 **How long it takes:** about 1–3 minutes depending on the connection (78 seconds in our local test). An internet connection is needed.
 
