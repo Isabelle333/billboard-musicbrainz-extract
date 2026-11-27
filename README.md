@@ -27,7 +27,7 @@ The copy in this repository is published **without outputs**, because some outpu
     python3 -m venv .venv
     source .venv/bin/activate          # Windows (PowerShell): .venv\Scripts\Activate.ps1
     pip install -r requirements.txt
-    jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=1200 --output executed.ipynb Data_Project_Billboard_Charts_Group_C.ipynb
+    python -m nbconvert --to notebook --execute --ExecutePreprocessor.timeout=1200 --output executed.ipynb Data_Project_Billboard_Charts_Group_C.ipynb
 
 Or open the notebook with `jupyter notebook Data_Project_Billboard_Charts_Group_C.ipynb` and use **Run → Run All Cells**.
 
