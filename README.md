@@ -1,6 +1,6 @@
 # Billboard Hot 100 and MusicBrainz: what determines whether a song reaches the chart? (Group C)
 
-**Authors (Group C):** Thien Anh NGUYEN, Norelle CHY--GLASSCOCK, Lio SUCHET--WANG, Georg RIEKHAKAINEN, Isabelle LIEW YU CHEN
+**Authors (Group C):** Thien Anh NGUYEN, Norelle CHY-GLASSCOCK, Lio SUCHET-WANG, Georg RIEKHAKAINEN, Isabelle LIEW YU CHEN
 
 **Repository:** https://github.com/Isabelle333/billboard-musicbrainz-extract
 
